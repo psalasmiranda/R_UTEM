@@ -18,7 +18,7 @@ gem 'googlecharts'
 gem 'kaminari'
 #Gema para diseño
 gem 'roadie'
-gem 'bootstrap' , '~> 4.1.3'
+gem 'bootstrap' , '~> 4.3.1'
 gem 'jquery-rails'
 #Gema para imagenes ( foto del usuario y foto de productos)
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
