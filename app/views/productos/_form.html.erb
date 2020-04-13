@@ -1,0 +1,131 @@
+
+<%= stylesheet_link_tag "indexproducto.css" %>
+
+<!------ Include the above in your HEAD tag ---------->
+<br><br><br>
+<%= form_with(model: producto, local: true, html: { multipart: true }) do |form| %>
+
+<section class="testimonial py-5 " id="testimonial">
+    <div class="container">
+        <div class="row  bg-light">
+            <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                        <h2 class="py-3">Publica tu Producto</h2>
+                        <p>Ingresa la siguiente información y una imagen de tu producto para que los administradores de Reutilización UTEM aprueben tu siguiente publicación
+</p>
+                    </div>
+                </div></div>
+
+            <div class="col-md-8 py-5 border">
+                <h4 class="pb-4">Detalles de tu publicación</h4>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <%= form.text_field :titulo, class:'form-control' , placeholder: 'Título de publicación' %>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <%= form.text_field :nombre, class:'form-control' , placeholder: 'Nombre del producto' %>
+                        </div>
+                        <%if current_user.rol == "Usuario"%>
+												<div class="form-group col-md-6">
+
+													<select id="inputState" class="form-control" <%= form.text_field :categoria, class:'form-control' , placeholder: 'Título' %>>
+														<option selected>Otros</option>
+
+
+                            <option>Libros</option>
+                            <option>Material de estudio</option>
+                            <option>Vestuario</option>
+                            <option>Juguetes y Bebés</option>
+                            <option>Deportes y Fitness</option>
+                            <option>Oficina</option>
+                            <option>Muebles</option>
+                            <option>Electronica y Electrodomesticos</option>
+                            <option>Herramientas</option>
+                            <option>Arte y Antigüedades </option>
+                            <option>Jardín</option>
+
+
+													</select>
+												</div>
+                        <%end%>
+
+                      </div>
+											<div class="form-row">
+                        <% if current_user.rol == "Usuario"%>
+	                        <div class="form-group col-md-6" style='display:none;'>
+	                          <%=  form.datetime_select :horacreacion %>
+	                        </div>
+                          <%else%>
+                          <div class="form-group col-md-6" style='display:none;'>
+                           <%=  form.datetime_select :horaaprobacion %>
+                           <input type="text" value="Disponible" readonly="readonly" <%= form.text_field :penalizar, id: :producto_penalizar  %>
+                         </div>
+                         <%end%>
+	                        <div class="form-group col-md-6">
+
+														<%if current_user.rol != "Administrador" && current_user.rol != "Super"%>
+            <div class="form-group" style='display:none;'>
+              <label class="col-md-3 control-label" for="email">Estado</label>
+
+							<input type="text" value="Pendiente" readonly="readonly" <%= form.text_field :estado, id: :producto_estado  %>
+            </div><%end%>
+
+						<%if  current_user%>
+					  <%if current_user.rol == "Administrador" || current_user.rol == "Super"%>
+						<div class="form-group" >
+              <select id="inputState" class="form-control" <%= form.text_field :estado, class:'form-control' , placeholder: 'Título' %>>
+                <option selected>Disponible</option>
+                <option> Rechazado</option>
+                <option> Pendiente</option>
+
+              </select>
+              </div><%end%><%end%>
+
+	                        </div>
+	                      </div>
+                    <div class="form-row">
+
+												<div class="form-group col-md-6">
+                          <h5>Ingresa una foto actual de tu producto.</h5>
+                             <%=form.file_field :imagen, id: :producto_imagen %>
+                              </div>
+                        <%if current_user.rol !="Usuario"%>
+                        <div class="form-group col-md-6">
+                          <img class="img-fluid" src="<%= @producto.imagen %>" width="350" height="350" />
+                        </div>
+                        <%end%>
+
+
+
+                        <div class="form-group col-md-12">
+                                 <%= form.text_area :descripcion, class:'form-control', placeholder: 'Descripcion del producto'%>
+                        </div>
+                        <div class="form-group col-md-12">
+                                 <%= form.text_area :defecto, class:'form-control', placeholder: 'Defecto del producto'%>
+                        </div>
+                    </div>
+										  <div class="form-row">
+										<%if  current_user%>
+						<%if current_user.rol != "Administrador" && current_user.rol != "Super"%>
+            <div class="actions" align="center">
+      <%= form.submit 'Publicar', class: "btn btn-primary"%>
+    </div><%end%><%end%>
+		<%if  current_user%>
+		<%if current_user.rol == "Administrador" || current_user.rol == "Super"%>
+		<div class="actions" align="center">
+<%= form.submit 'Aprobar Publicación', class: "btn btn-primary"%><br>
+
+</div><%end%><%end%>
+
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<%end%>

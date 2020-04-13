@@ -1,0 +1,129 @@
+
+
+<%= stylesheet_link_tag "formulario.css" %>
+<%a = DateTime.now%>
+<%if current_user%>
+
+<div class="bg-light">
+  <br>
+<div class="container " style="margin-top: 1em;">
+    <!-- Sign up form -->
+    <%= form_with(model: encuestasolicitante, local: true) do |form| %>
+    <%if current_user.id == encuestasolicitante.idsol%>
+    <%if encuestasolicitante.horapedido.to_i > a.to_i%>
+    <form>
+        <!-- Sign up card -->
+        <div class="card person-card">
+            <div class="card-body">
+                <!-- Sex image -->
+                <img id="img_sex" class="person-img"
+                    src="https://visualpharm.com/assets/217/Life%20Cycle-595b40b75ba036ed117d9ef0.svg">
+                <h2 id="who_message" class="card-title">Encuesta sobre Solicitante</h2>
+
+                <!-- First row (on medium screen) -->
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" style="padding=0.5em;">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Sobre el Donador</h2>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">¿Con que nota evaluas al Donador <%=encuestasolicitante.nombredon%> ?</label>
+                            <select id="inputState" class="form-control"  <%= form.number_field :notadon, id: :encuestasolicitante_notadon %>>
+
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+
+                          </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="email" class="col-form-label">¿Como ubicaste Donador <%=encuestasolicitante.nombresol%> por primera vez?</label>
+                          <select id="inputState" style="width:500px" class="form-control"   <%= form.text_field :res, id: :encuestasolicitante_res %>>
+
+                          <option>Número Telefónico</option>
+                          <option>Email</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="email" class="col-form-label">¿El producto <%= encuestasolicitante.nompro%> fue entregado por el donador <%=encuestasolicitante.nombredon%> ?</label>
+                      <select id="inputState" style="width:500px" class="form-control"                   <%= form.text_field :estadopro, id: :encuestasolicitante_estadopro %>>
+
+                      <option>Entregado</option>
+                      <option>No Entregado</option>
+                    </select>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Sobre el Producto</h2>
+                        <div class="form-group">
+                          <label for="email" class="col-form-label">¿Con que nota evaluas el producto recibido de la publicación <%=encuestasolicitante.publicacion%>?</label>
+                          <select id="inputState" style="width:500px" class="form-control"   <%= form.number_field :notapro, id: :encuestasolicitante_notapro %>>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email" class="col-form-label">¿En que estado se encontraba el producto <%=encuestasolicitante.nompro%> de la publicación <%= encuestasolicitante.publicacion%>?</label>
+                      <select id="inputState" style="width:500px" class="form-control"   <%= form.text_field :real, id: :encuestasolicitante_real %>>
+
+                      <option>Comó lo indicaba la publicación</option>
+                      <option>En un estado peor comentado en la publicación</option>
+                    </select>
+                </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 1em;">
+
+             <%= form.submit "Enviar Formulario",class: "btn btn-primary" %>
+
+        </div>
+        </form>
+        <%else%>
+        <script>
+            alert("Aun no se libera Encuesta");
+            window.location.href="/publicaciones/solicitados"
+        </script>
+
+        <%end%>
+        <%else%>
+        <script>
+            alert("Acceso denegado");
+            window.location.href="/"
+        </script>
+
+        <%end%>
+        <%end%>
+
+</div>
+</div>
+
+
+<%else%>
+<script>
+    alert("No ha iniciado sesión");
+    window.location.href="/"
+</script>
+<%end%>

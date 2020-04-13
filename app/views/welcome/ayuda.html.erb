@@ -1,0 +1,267 @@
+
+<%= stylesheet_link_tag "ayuda.css" %>
+
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<BR><BR>
+
+                      <div class="container-fluid bg-light">
+                        <BR><BR>
+                          <BR><BR>
+                        
+                         <div class="row">
+                           <div class="col-sm-12">
+                             <div class="pos-rel">
+                               <!-- Nav pills -->
+                               <ul class="nav nav-pills justify-content-center nav-justified" role="tablist">
+
+                                 <%if !current_user%>
+                                  <li class="nav-item">
+                                     <a class="nav-link active btn btn-primary" data-toggle="pill" href="#organizer-details">¿Como Registrarse?</a>
+                                  </li>
+                                  <%else%>
+                                  <li class="nav-item">
+                                     <a class="nav-link active btn btn-primary" data-toggle="pill" href="#organizer-details">¿Como funciona la barra de menú?</a>
+                                  </li>
+                                  <%end%>
+                                  <li class="nav-item">
+                                     <a class="nav-link btn btn-primary" data-toggle="pill" href="#event-details">¿Como Publicar?</a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a class="nav-link btn btn-primary" data-toggle="pill" href="#confirm-details">¿Como funciona la plataforma?</a>
+                                  </li>
+                               </ul>
+                               <div class="connected-line"></div>
+                               <!-- Tab panes -->
+                               <div class="tab-content">
+                                  <div id="organizer-details" class="container tab-pane active">
+                                    <form class="seminor-login-form">
+
+<%if !current_user%>
+<br><br><hr>
+                     <div class="how-section1">
+
+                       <div class="row">
+                           <div class="col-md-6 how-img">
+                              <%= image_tag ("registro.png"),size: "500x400" %>
+                                </div>
+                           <div class="col-md-6">
+
+                                           <h4 class="subheading">Solo tienes que dirigirte a nuestro menú</h4>
+                           <p class="text-muted">En la página principal de REUTILIZA UTEM, solo tendras que bajar hasta encontrar la opción registrate
+                           como se muestra en la imagen del costado izquierdo y presionar donde dice "Aquí".</p>
+                           </div>
+                       </div>
+                       <br><hr><br>
+                       <div class="row">
+                           <div class="col-md-6">
+                               <h4>Tan solo ingresa la información que te solicitamos</h4>
+
+                                           <p class="text-muted">Al momento que ingresas a la opción de registrarse, deberas ingresar toda la información necesaria
+                                           que nosotros te hemos solicitado.
+                                          Si eres alumno, docente o cumples con otro rol dentro de la universidad, deberas contar con una correo utem (ej: Juanastorga@utem.cl),
+                                          si no cumples con esta condición y eres parte de la institución acercate al área encargada de las cuetas de UTEM y exige la tuya para que seas parte de esta gran plataforma.</p>
+                           </div>
+                           <div class="col-md-6 how-img">
+                              <%= image_tag ("a.png"),size: "500x400" %>
+                               </div>
+                       </div>
+                       <br><hr><br>
+                       <div class="row">
+                           <div class="col-md-6 how-img">
+                             <%= image_tag ("e.png"),size: "500x400" %>
+                               </div>
+                           <div class="col-md-6">
+
+                                           <h4 class="subheading">Ya estas casi finalizando el proceso de registro.</h4>
+                                           <p class="text-muted">Al momento que te registres en la plataforma, se te enviará un correo de autenticación la cual deberás confirmar
+                                           de forma obligatoria para acceder a los grandes beneficios de esta plataforma.</p>
+                           </div>
+                       </div>
+
+                       <div class="row">
+                           <div class="col-md-6">
+
+                                           <h4 class="subheading">Ya estas listo!</h4>
+                                           <p class="text-muted">Al momento de haber confirmado el correo de autenticación, tendras los beneficios se publicar objetos, solicitar de estos, pubicar avisos o ayudar a usuarios en su busqueda, en hora buena ya eres parte de esta gran plataforma.</p>
+                           </div>
+                           <div class="col-md-6 how-img">
+                             <%= image_tag ("d.png"),size: "500x400" %>
+                               </div>
+                       </div>
+                   </div>
+                   <%else%>
+                   <br><br><hr>
+                   <div class="how-section1">
+                     <div class="row">
+                         <div class="col-md-6 how-img">
+                            <%= image_tag ("1.png"),size: "500x400" %>
+                              </div>
+                         <div class="col-md-6">
+
+                                         <h4 class="subheading">¿Como funciona la barra de menú?</h4>
+                         <p class="text-muted">Al momento de que usted inicie sesión su barra mostrara las siguientes opciones(Configuraciones, publicaciones, productos y avisos).
+                         En la opción de configuraciones solo tendrás a opcion de modificiar datos personales o cerrar su sesión dentro de la plataforma.</p>
+                         </div>
+                     </div>
+                     <br><hr><br>
+                     <div class="row">
+                         <div class="col-md-6">
+                             <h4>Publicaciones</h4>
+
+                                         <p class="text-muted">En esta opción te mostraremos  tus publicaciones y sus actuales estados dentro de la plataforma y a su vez los productos que otros usuarios han solicitado y haz solicitado
+                                         dentro de la plataforma</p>
+                         </div>
+                         <div class="col-md-6 how-img">
+                            <%= image_tag ("5.png"),size: "500x400" %>
+                             </div>
+                     </div>
+                     <br><hr><br>
+                     <div class="row">
+                         <div class="col-md-6 how-img">
+                           <%= image_tag ("6.png"),size: "500x400" %>
+                             </div>
+                         <div class="col-md-6">
+
+                                         <h4 class="subheading">Productos</h4>
+                                         <p class="text-muted">En sta opción te da la posibilidades de dirigirte a las pestañas de productos y a su vez te da la opción de publicar productos dentro de la plataforma.</p>
+                         </div>
+                     </div>
+                     <br><hr><br>
+                     <div class="row">
+                         <div class="col-md-6">
+
+                                         <h4 class="subheading">Avisos</h4>
+                                         <p class="text-muted">En esta opción te damos la posibilidad de publicar nuevos avisos de busqueda, dirigirte a la pestaña de avisos y ver el estado de tus avisos.</p>
+                         </div>
+                         <div class="col-md-6 how-img">
+                           <%= image_tag ("7.png"),size: "500x400" %>
+                             </div>
+                     </div>
+                     <br><hr><br>
+                 </div>
+
+                   <%end%>
+
+                     </form>
+                                  </div>
+                                  <div id="event-details" class="container tab-pane fade">
+                                    <br><br><hr>
+                                    <form class="seminor-login-form">
+                                      <div class="how-section1">
+                                        <div class="row">
+                                            <div class="col-md-6 how-img">
+                                               <%= image_tag ("1.png"),size: "500x400" %>
+                                                 </div>
+                                            <div class="col-md-6">
+                                                <h4></h4>
+                                                            <h4 class="subheading">¿Como puedes publicar un producto?</h4>
+                                            <p class="text-muted">Al momento de publicar algun producto, deberas iniciar sesión en nuestra plataforma y luego puedes dirigirte a la barra de menu de productos donde sale la opción de publica productos
+                                            o dentro del menu principal tambien puedes encontrar la opción de publicar producto y te van a redireccionar a la paginar de publicaciones</p>
+                                            </div>
+                                        </div>
+                                        <br><hr><br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Al momento de publicar</h4>
+
+                                                            <p class="text-muted">Cuando ingreses toda la información del producto a publicar en nuestra plataforma, te llegara a tu cuenta
+                                                            un email con la verificación de creación de publicación y a su vez tu producto estara en estado "Pendiente" hasta
+                                                          que el administrador verificque que cumpla con todas las condiciones y apruebe todos los productos</p>
+                                            </div>
+                                            <div class="col-md-6 how-img">
+                                               <%= image_tag ("9.png"),size: "500x400" %>
+                                                </div>
+                                        </div>
+                                        <br><hr><br>
+                                        <div class="row">
+                                            <div class="col-md-6 how-img">
+                                              <%= image_tag ("1.png"),size: "500x400" %>
+                                                </div>
+                                            <div class="col-md-6">
+                                                <h4>¡Como puedes publicar un aviso?</h4>
+                                                              <p class="text-muted">De la misma forma que haces para publicar un producto, se hace en los avisos. Usted tendrá
+                                                                que dirigirse a la barra de menú o al menú principal  y presiona la opción de avisos y presionar publicar aviso y se redireccionara a  la
+                                                                página de avisos.</p>
+                                            </div>
+                                        </div>
+                                        <br><hr><br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Ingresa lo que buscas!</h4>
+                                                            <p class="text-muted">Solo debes ingresar el titulo y lo que buscas para que otros usuarios te ayuden en tu busqueda, al momento
+                                                            que publiques tu producto, deberas esperar que el administrador revise dicha publicación para que esta pueda ser visible para los otros
+                                                          usuarios.</p>
+                                            </div>
+                                            <div class="col-md-6 how-img">
+                                              <%= image_tag ("10.png"),size: "500x400" %>
+                                                </div>
+                                        </div>
+                                    </div>
+
+                     </form>
+                     <br><hr><br>
+                                  </div>
+                                  <div id="confirm-details" class="container tab-pane fade">
+<form  class="seminor-login-form">
+  <br><hr><br>
+                                    <div class="how-section1">
+                                      <div class="row">
+                                          <div class="col-md-6 how-img">
+                                             <%= image_tag ("11.png"),size: "500x400" %>
+                                               </div>
+                                          <div class="col-md-6">
+                                              <h4>Reutiliza UTEM</h4>
+                                                          <h4 class="subheading">Contamos con dos menú</h4>
+                                          <p class="text-muted">AL momento de iniciar sesión se modificara tu barra de menu sin haber iniciado sesión a otras opciones que puedes hacer con tu cuenta activa.
+                                </p>
+                                          </div>
+                                      </div>
+                                      <br><hr><br>
+                                      <div class="row">
+                                          <div class="col-md-6">
+
+                                                          <h4 class="subheading">¿Deseas Buscar algun producto?</h4>
+                                                          <p class="text-muted">Tan solo deberás ingresar a la opciones publicaciones y te van a aparecer todos os productos disponibles dentro de la plataforma
+                                                        .</p>
+                                          </div>
+                                          <div class="col-md-6 how-img">
+                                             <%= image_tag ("12.png"),size: "500x400" %>
+                                              </div>
+                                      </div>
+                                      <br><hr><br>
+                                      <div class="row">
+                                          <div class="col-md-6 how-img">
+                                            <%= image_tag ("13.png"),size: "500x400" %>
+                                              </div>
+                                          <div class="col-md-6">
+                                              <h4>¿Deseas ayudar a algun usuario en su busqueda?.</h4>
+                                                          <p class="text-muted">Tan solo deberas ingresar ingresar a la opciones de avisos y leer lo que buscan los usuarios.
+                                                          al momentos de que puedas cooperar con la busqueda de alguno solo presiona contactar y de forma inmediata te enviaremos un correo
+                                                         a ti y al usuario con al información de ambos a sus emails.</p>
+                                          </div>
+                                      </div>
+                                      <br><hr><br>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <h4>¿Comó solicito un producto?</h4>
+                                                          <section><p class="text-muted">Al momento de iniciar sesión, cuando ingreses a ver un producto publicado te van a aparecer dos nuevas opciones las cuales
+                                                            solicitar producto, donde el producto disponible pasará a un estado de Solicitado y te enviaremos toda la información necesarios
+                                                            del usuario donador a tu email al igual que a el un correo con toda tu información. Despues dentro de 7 días se liberá una evaluación
+                                                            sobre dicha entrega.
+                                                          </section> .</p>
+                                          </div>
+                                          <div class="col-md-6 how-img">
+                                            <%= image_tag ("14.png"),size: "500x400" %>
+                                              </div>
+                                      </div>
+                                      <br><hr><br>
+                                  </div>
+                                </form>
+                                      </div>
+                               </div>
+                            </div>
+                            </div>
+                         </div>
+                      </div>

@@ -1,0 +1,4 @@
+class Encuestadonado < ApplicationRecord
+
+
+end

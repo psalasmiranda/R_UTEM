@@ -1,0 +1,14 @@
+<%if user_signed_in?%>
+<%if current_user.rol != nil  %>
+
+<script>
+    alert("Usted no posee los permisos necesarios para ingresar");
+    window.location.href="/"
+</script>
+<%end%>
+<%else%>
+<script>
+    alert("Usted ha iniciado sesión");
+    window.location.href="sign_in"
+</script>
+<%end%>

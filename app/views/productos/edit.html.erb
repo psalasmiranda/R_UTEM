@@ -1,0 +1,15 @@
+
+
+<%if (@current_user.id == @producto.user_id) || @current_user.rol =="Administrador" || @current_user.rol == "Super"%>
+
+<%= render 'form', producto: @producto %>
+
+<%else%>
+
+
+<script>
+    alert("Usted no puede ingresar a esta dirección");
+    window.location.href="/"
+</script>
+
+<%end%>

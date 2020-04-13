@@ -1,0 +1,19 @@
+<%if user_signed_in?%>
+<%if current_user.rol != "Administrador" && current_user.rol != "Super" %>
+
+<%= render 'form', aviso: @aviso %>
+
+
+
+<%else%>
+<script>
+    alert("Usted como administrador no puede publicar productos");
+    window.location.href="/"
+</script>
+<%end%>
+<%else%>
+<script>
+    alert("Usted ha iniciado sesión");
+    window.location.href="/"
+</script>
+<%end%>

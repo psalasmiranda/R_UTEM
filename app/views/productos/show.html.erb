@@ -1,0 +1,122 @@
+    <%= stylesheet_link_tag "mostrarproducto.css" %>
+
+
+
+
+<br>
+
+<div class=" bg-light">
+  <br> <br>
+        <div class="container ">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                            <li class="breadcrumb-item active" >Categoría</li>
+                            <li class="breadcrumb-item active" aria-current="page"><%= @producto.categoria%></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container  bg-light">
+          <%if !current_user%>
+          <div class="alert alert-warning">
+        <strong>Alerta: </strong> No podrá Solicitar Producto hasta que usted inicie Sesión.
+    </div><%end%>
+            <div class="row">
+                <!-- Image -->
+                <div class="col-12 col-lg-6">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <a href="" data-toggle="modal" data-target="#productModal">
+                              <%if @producto.imagen? %>
+                                  <img class="img-fluid" width="500" hieght="500" src="<%= @producto.imagen %>" />
+                              <%else%>
+                            <%= image_tag "sinfoto.jpg", size: "500x500"%>
+                              <%end%>
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-lg-6 add_to_cart_block">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+
+                            <form method="get" action="cart.html">
+                                <div class="form-group">
+                                    <label for="colors">Nombre Producto: <%= @producto.nombre%></label>
+
+                                </div><hr>
+                                <div class="form-group">
+                                    <label>Categoría: <%=@producto.categoria%></label>
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </form>
+  <%if current_user%>
+                            <%if current_user.id != @producto.user_id && current_user.rol != "Administrador"  && current_user.rol != "Super" && current_user.bloqueo != "Bloqueado" %>
+
+                            <%if current_user.cantidad <4%>
+                            <div align = "center"><%= button_to 'Solicitar Producto', solicitar_path(@producto)%></div>
+                            <%end%>
+
+                            <%end%>
+
+
+
+
+
+                              <br><br><br><br><br>
+                              <%if current_user.rol != "Usuario"%>
+                                <div align = "center"><%=button_to ' Revisar', edit_producto_path(@producto), :method => :get,class:"glyphicon glyphicon-pencil btn btn-warning " %></div>
+                                <div align = "center"><%=button_to ' Penalizar', reporte_path(@producto), :method => :get,class:"glyphicon glyphicon-pencil btn btn-warning " %></div>
+                                <%end%>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div  >
+                      <%end%>
+                <!-- Description -->
+                <div class="col-12">
+                    <div class="card border-light mb-3">
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-align-justify"></i> Descripción</div>
+                        <div class="card-body">
+                          <%= @producto.descripcion%>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="card border-light mb-3">
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-align-justify"></i> Defectos</div>
+                        <div class="card-body">
+                          <%= @producto.defecto%>
+                        </div>
+                    </div>
+                </div>
+                <%if current_user%>
+                <%if current_user.rol == "Usuario"%>
+                  <div align = "center"><%= button_to 'Reportar Producto', reportar_path(@producto)%>
+                <%end%>
+        <%end%>
+                <!-- Reviews -->
+
+            </div>
+        </div>
+
+        <br><br>
+</div>

@@ -1,0 +1,3 @@
+class Encuestasolicitante < ApplicationRecord
+ 
+end

@@ -1,0 +1,65 @@
+
+<!------ Include the above in your HEAD tag ---------->
+<br><br><br>
+<%= form_with(model: aviso, local: true) do |form| %>
+<%if user_signed_in?%>
+
+<section class="testimonial py-5 " id="testimonial">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                <div class=" ">
+
+                    <div class="card-body">
+                        <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                        <h2 class="py-3">Publica tus avisos</h2>
+                        <p>Ingresa el titulo y lo que busvas para que sea revisado y publicado en nuestras plataformas de REUTILIZA UTEM
+</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-8 py-5 border bg-light">
+                <h4 class="pb-4">Detalles de tu aviso</h4>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <%= form.text_field :nombre, id: :aviso_nombre, placeholder: 'Título de publicación' %>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <%= form.text_area :descripcion, class:'form-control', id: :aviso_descripcion, placeholder: '¿Qué buscas?' %>
+                          </div>
+                        <%if current_user.rol != "Usuario"%>
+                        <div class="form-group col-md-6" style='display:none;'>
+                         <%=  form.datetime_select :fecha %>
+                         <input type="text" value="Disponible" readonly="readonly" <%= form.text_field :estado, id: :aviso_estado  %>
+
+                       </div>
+                       <%end%>
+                       	<%if current_user.rol != "Administrador" && current_user.rol != "Super"%>
+                          <div class="form-group" style='display:none;'>
+                          <label class="col-md-3 control-label" for="email">Estado</label>
+                           <%=  form.datetime_select :fecha %>
+                       		<input type="text" value="Pendiente" readonly="readonly" <%= form.text_field :estado, id: :producto_estado  %>
+                        </div><%end%>
+
+                        <%= form.submit 'Publicar Aviso ', class: "btn btn-primary"%><br>
+
+
+
+                        <%end%>
+
+                      </div>
+
+
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<%end%>

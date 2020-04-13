@@ -1,0 +1,157 @@
+<%= stylesheet_link_tag "registrar.css" %>
+
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="http://200.6.99.248/~bru487cl/files/Utem.jpg" alt=""/>
+                        <h3>Bienvenido a Reutilizar UTEM</h3>
+                        <p>Una nueva forma de ser mas sustentables</p>
+                        <br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reutilizar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">UTEM</a>
+                            </li>
+                        </ul>
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Ingresa tus datos Aquí</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <%= f.text_field :nombre, class:'form-control' , placeholder: 'Nombres' %>
+                                        </div>
+                                        <div class="form-group">
+                                          <%= f.text_field :paterno, class:'form-control' , placeholder: 'apellido paterno' %>
+
+                                        </div>
+                                        <div class="form-group">
+                                          <%= f.text_field :materno, class:'form-control' , placeholder: 'apellido materno' %>
+
+                                        </div>
+                                        <div class="form-group">
+                                          <%= f.text_field :red_fija, class:'form-control' , placeholder: 'telefono fijo' %>
+
+                                        </div>
+                                        <div class="form-group">
+                                        <%= f.text_field :red_movil, class:'form-control' , placeholder: 'telefono movil' %>
+                                        </div>
+                                        <div class="form-group">
+
+                                              <select id="inputState" class="form-control" <%= f.text_field :sede, class:'form-control'%>>
+                                              <option selected>Campus.</option>
+                                              <option>Campus Macul</option>
+                                              <option>Campus Fae</option>
+                                              <option>Campus Santiago Centro</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+
+                                            <select id="inputState" class="form-control" <%= f.text_field :sexo, class:'form-control'%>>
+                                            <option selected>Sexo.</option>
+                                            <option>Femenino</option>
+                                            <option>Masculino</option>
+                                            <option>Otro</option>
+
+                                          </select>
+                                      </div>
+                                        <div class="form-group">
+
+                                          <select id="inputState" class="form-control" <%= f.text_field :personal, class:'form-control' %>>
+                                          <option selected>Rol dentro de la UTEM.</option>
+                                          <option> Alumno (a)</option>
+                                          <option> Profesor (a)</option>
+                                          <option> Administrativo</option>
+                                        </select>
+                                        </div>
+<div class="form-group">
+                                  <select id="inputState" class="form-control" <%= f.text_field :carrera, class:'form-control'  %>>
+      														<option selected>Selecciona tu carrera...</option>
+      														<option> Administración Pública</option>
+      														<option> Bibliotecología y Documentación</option>
+      														<option> Contador Público y Auditor</option>
+      														<option> Ingeniería Comercial</option>
+      														<option> Ingeniería en Administración Agroindustrial</option>
+      														<option> Ingeniería en Comercio Internacional</option>
+      														<option> Ingeniería en Gestión Turística</option>
+      														<option> Arquitectura</option>
+      														<option>  Ingeniería Civil en Obras Civiles</option>
+      														<option> Ingeniería en Construcción</option>
+      														<option> Ingeniería Civil en Prevención de Riesgos y Medioambiente</option>
+                                  <option>Ingeniería en Biotecnología</option>
+      														<option>Ingeniería en Industria Alimentaria</option>
+      														<option>Ingeniería en Química</option>
+      														<option>Química Industrial</option>
+      														<option> Ingeniería Civil en Prevención de Riesgos y Medioambiente</option>
+                                  <option> Diseño en Comunicación Visual</option>
+      														<option>  Diseño Industrial</option>
+      														<option> Trabajo Social</option>
+      														<option>Bachillerato en Ciencias de la Ingeniería</option>
+      														<option> Dibujante Proyectista</option>
+                                  <option>Ingeniería Civil en Computación, mención Informática</option>
+      														<option>  Ingeniería Civil Industrial</option>
+      														<option>Ingeniería Civil en Electrónica</option>
+      														<option>  Ingeniería Civil en Mecánica Ingeniería en Geomensura</option>
+                                  <option> Ingeniería en Informática</option>
+                                  <option>Ingeniería en Transporte y Tránsito</option>
+                                  <option>Ingeniería Industrial</option>
+
+  													</select></div>
+
+
+
+                                        <!---Condición para crear nuevos administradores -->
+
+                                        <div class="form-group" style='display:none;'>
+                                                      <input type="text" value="Usuario" readonly="readonly"   <%= f.text_field :rol, id: :user_rol %>
+                                                        <input type="number" value="0" readonly="readonly"   <%= f.number_field :cantidad, id: :user_cantidad %>
+                                                          <input type="number" value="4" readonly="readonly"   <%= f.number_field :tope, id: :user_tope %>
+
+
+                                        </div>
+
+                                        <div class="form-group" style='display:none;'>
+                                                      <input type="text" value="Desbloqueado" readonly="readonly"   <%= f.text_field :bloqueo, id: :user_bloqueo %>
+                                        </div>
+                                        <div class="form-group" style='display:none;'>
+                                                      <input type="text" value="0" readonly="readonly"   <%= f.text_field :penalizar, id: :user_penalizar %>
+                                                      </div>
+
+                                        <div class="form-group">
+                                          <%= f.text_field :email, class:'form-control' , placeholder: 'Correo UTEM' %>
+                                        </div>
+                                        <div class="form-group">
+                                          <% if @minimum_password_length %>
+                                          <em>(<%= @minimum_password_length %> caracteres como minimo)</em>
+                                          <% end %><br />
+                                          <%= f.password_field :password, class:'form-control' , placeholder: 'Contraseña' %>
+                                        </div>
+                                        <div class="form-group">
+                                            <%= f.password_field :password_confirmation, class:'form-control' , placeholder: 'Contraseña' %>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                      <text>Seleccione foto de perfil</text>
+                                         <%= f.file_field :imagen, class:'form-control'  %>
+                                         <br><div align="right"><%= f.submit "Registrar" , class: "btn btn-primary" %></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <%end%>
+                    </div>
+                </div>
+
+
+            </div>

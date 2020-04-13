@@ -1,0 +1,60 @@
+
+<div style="font-family: Helvetica Neue, Helvetica, Helvetica, Arial, sans-serif;">
+    <table style="width: 100%;">
+      <tr>
+        <td></td>
+        <td bgcolor="#FFFFFF ">
+          <div style="padding: 15px; max-width: 600px;margin: 0 auto;display: block; border-radius: 0px;padding: 0px; border: 1px solid lightseagreen;">
+            <table style="width: 100%;background: #5d5657 ;">
+              <tr>
+                <td></td>
+                <td>
+                  <div>
+                    <table width="100%">
+                      <tr>
+                        <td rowspan="2" style="text-align:center;padding:10px;">
+							<img style="float:left; " width="200"  src="https://donalo.org/img/blog/imagen-1503920684.png" />
+
+							<span style="color:white;float:right;font-size: 13px;font-style: italic;margin-top: 20px; padding:10px; font-size: 14px; font-weight:normal;">
+							"Información de Solicitud"<span></span></span></td>
+                      </tr>
+                    </table>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            </table>
+            <table style="padding: 10px;font-size:14px; width:100%;">
+              <tr>
+                <td style="padding:10px;font-size:14px; width:100%;">
+                    <p>Hola! </p>
+                   te enviamos la información del donador del producto <%=@producto.nombre%> de la publicación <%=@producto.titulo%> </p>
+                    <hr>
+
+                    <stronge><p>Información donador:</p></stronge>
+                     <p> </p>
+                     <% user= User.find(@producto.user_id)%>
+                    <p><stronge>Nombre Usuario:</stronge><%=user.nombre%> <%=user.paterno%> <%=user.materno%><br>   
+                    <p><stronge>correo electronico:</stronge><%=@producto.user.email%><br>
+                    <p><stronge>Celular:</stronge><%=@producto.user.red_movil%><br>
+                    <hr>
+                    <p><stronge>labor dentro de la Universidad:</stronge><%=@producto.user.personal%><br>
+                    <p><stronge>Campus:</stronge><%=@producto.user.sede%><br>
+                      <hr>
+
+
+        </p>
+                              <!-- /Callout Panel -->
+                  <!-- FOOTER -->
+                 </td>
+              </tr>
+			  <tr>
+			  <td>
+				 <div align="center" style="font-size:12px; margin-top:20px; padding:5px; width:100%; background:#eee;">
+                      Fecha: <%= @producto.horasolicitud.strftime("%d/%m/%Y")%>
+                      Hora:<%= @producto.horasolicitud.strftime("%H:%M:%S")%>
+                  </div>
+                </td>
+			  </tr>
+                </table>
+          </div>

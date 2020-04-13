@@ -1,0 +1,175 @@
+
+<%= stylesheet_link_tag "edituser.css" %>
+
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="container emp-profile p-3 mb-2 bg-light">
+              <form method="post">
+     <div class="row">
+       <div class="col-md-4">
+           <div class="profile-img">
+             <%if current_user.imagen.blank?%>
+
+               <img width="64" hieght="60" src="<%= asset_path 'usuario.jpg'%>" >
+             <%else%>
+
+           <img width="64" hieght="60" src="<%= current_user.imagen%>" >
+             <%end%>
+               <div class="file btn btn-lg btn-primary">
+                   Foto Actual
+                   <input type="file" name="file"/>
+               </div>
+           </div>
+       </div>
+                      <div class="col-md-6">
+                          <div class="profile-head">
+                                      <h5>
+
+                                      </h5>
+                                      <h6>
+                                          <%=current_user.nombre%> <%=current_user.paterno%> <%=current_user.materno%>
+
+                                      </h6>
+                                      <p class="proile-rating">Universidad Tecnologica Metropolitana<br><%=@current_user.email%></p>
+                              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                      <p><%=%></p>
+                                  </li>
+                                  <li class="nav-item">
+                                      <p><%=%></p>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+
+
+                  </div>
+                  <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                          <h3 class="register-heading">Ingresa tus datos Aquí</h3>
+
+                  <div class="row register-form">
+                      <div class="col-md-6"><br>
+
+
+                        <div class="form-group">
+                        Nombres  <BR>
+                        <%= f.text_field :nombre, autofocus: true,class: "form-control", autocomplete: "email" %>
+                        </div>
+                        <div class="form-group">
+                        Apellido Paterno <BR>
+                        <%= f.text_field :paterno, autofocus: true,class: "form-control", autocomplete: "email" %>
+                        </div>
+                        <div class="form-group">
+                        apellido Materno  <BR>
+                        <%= f.text_field :materno, autofocus: true,class: "form-control", autocomplete: "email" %>
+                        </div>
+                        <div class="form-group">
+                        Telefono Casa  <BR>
+                        <%= f.text_field :red_fija, autofocus: true,class: "form-control", autocomplete: "email" %>
+                        </div>
+                        <div class="form-group">
+                        Telefono Movil  <BR>
+                        <%= f.text_field :red_movil, autofocus: true,class: "form-control", autocomplete: "email" %>
+                        </div>
+                        <div class="form-group">
+                        Subir nueva foto de Perfil  <BR>
+                        <%=f.file_field :imagen,class: "form-control", id: :user_imagen %>
+                      </div>
+                    </div>
+
+                        <div class="col-md-6"><br>
+
+
+                          <div class="form-group">
+                          Cuenta UTEM  <BR>
+                          <%= f.text_field :email, autofocus: true,class: "form-control", autocomplete: "email" %>
+                          </div>
+                          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                          <div>Actualmente en espera de confirmación para: <%= resource.unconfirmed_email %></div>
+                          <% end %>
+                          <div class="form-group">
+                          Contraseña <BR>
+                          <%= f.password_field :password,class: "form-control", autocomplete: "off" %>
+                          </div>
+                          <div class="form-group">
+                          Confirmar contraseña <BR>
+                          <%= f.password_field :password_confirmation,class: "form-control", autocomplete: "off" %>
+                          </div>
+                          <div class="form-group">
+                          Seleccione Campus Universitario
+                                <select id="inputState" class="form-control" <%= f.text_field :sede, class:'form-control'%>>
+                                <option selected>Campus .</option>
+                                <option> Campus Macul</option>
+                                <option> Campus Fae</option>
+                                <option> Campus Santiago Centro</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                            Seleccione su actual Rol dentro de la Universidad
+                            <select id="inputState" class="form-control" <%= f.text_field :personal, class:'form-control' %>>
+                            <option selected>Rol dentro de la UTEM.</option>
+                            <option> Alumno (a)</option>
+                            <option> Profesor (a)</option>
+                            <option> Administrativo</option>
+                          </select>
+                          </div>
+                          <div class="form-group">
+                            Selecciona tu actual Carrera Universitaria
+                            <select id="inputState" class="form-control" <%= f.text_field :carrera, class:'form-control'  %>>
+                            <option selected>Selecciona tu carrera...</option>
+                            <option> Administración Pública</option>
+                            <option> Bibliotecología y Documentación</option>
+                            <option> Contador Público y Auditor</option>
+                            <option> Ingeniería Comercial</option>
+                            <option> Ingeniería en Administración Agroindustrial</option>
+                            <option> Ingeniería en Comercio Internacional</option>
+                            <option> Ingeniería en Gestión Turística</option>
+                            <option> Arquitectura</option>
+                            <option>  Ingeniería Civil en Obras Civiles</option>
+                            <option> Ingeniería en Construcción</option>
+                            <option> Ingeniería Civil en Prevención de Riesgos y Medioambiente</option>
+                            <option>Ingeniería en Biotecnología</option>
+                            <option>Ingeniería en Industria Alimentaria</option>
+                            <option>Ingeniería en Química</option>
+                            <option>Química Industrial</option>
+                            <option> Ingeniería Civil en Prevención de Riesgos y Medioambiente</option>
+                            <option> Diseño en Comunicación Visual</option>
+                            <option>  Diseño Industrial</option>
+                            <option> Trabajo Social</option>
+                            <option>Bachillerato en Ciencias de la Ingeniería</option>
+                            <option> Dibujante Proyectista</option>
+                            <option>Ingeniería Civil en Computación, mención Informática</option>
+                            <option>  Ingeniería Civil Industrial</option>
+                            <option>Ingeniería Civil en Electrónica</option>
+                            <option>  Ingeniería Civil en Mecánica Ingeniería en Geomensura</option>
+                            <option> Ingeniería en Informática</option>
+                            <option>Ingeniería en Transporte y Tránsito</option>
+                            <option>Ingeniería Industrial</option>
+
+                      </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    Para Finalizar los Cambios ingresa tu Actual contraseña
+                         <%= f.password_field :current_password,class:'form-control' ,  autocomplete: "off" %>
+                  </div>
+                  <div class="form-group" align="center">
+                      <%= f.submit "Actualizar", class: "btn btn-primary" %>
+                  </div>
+
+                  <hr>
+                  <% end %>
+
+
+
+
+
+</div>
+              </form>
+          </div>

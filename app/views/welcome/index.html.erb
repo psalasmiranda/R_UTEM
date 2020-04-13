@@ -1,0 +1,437 @@
+
+<%= stylesheet_link_tag "inicio.css" %>
+<!------ Include the above in your HEAD tag ---------->
+
+<%= javascript_include_tag "inicio", "data-turbolinks-track" => true  %>
+<!-- Team -->
+
+
+<%if !current_user%>
+<div class="alert alert-warning">
+<strong>Alerta: </strong> No podrá Solicitar Productos o Contactar usuarios hasta que usted inicie Sesión.
+</div><%end%>
+
+
+<br><br>
+    <div class="container p-3 mb-2 bg-light">
+        <h5 class="section-title h1 "></h5>
+        <div class="row">
+
+
+            <%if current_user%>
+            <%if current_user.rol == "Usuario"%>
+            <!-- Productos -->
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'product.jpeg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Ver Productos</h4>
+                                    <p class="card-text  "></p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Publicaciones</h4>
+                                    <p class="card-text">Si deseas buscar algun producto que se encuentre disponible esta es la sección adecuada e ingresa <%=link_to " Aquí", productos_path%></a></p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Publicar Productos -->
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="<%= asset_path 'pro.png'%>" alt="card image"></p>
+                                    <h4 class="card-title">Publicar Productos</h4>
+                                    <p class="card-text"></p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title">Publicar
+                                      </h4>
+                                    <p class="card-text">Si posees algun objeto que deseas regalar puedes publicarlo <%= link_to "aquí", new_producto_path%>  </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Avisos -->
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'publicaciones.jpg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Ver Avisos</h4>
+                                    <p class="card-text  "></p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Publicaciones</h4>
+                                    <p class="card-text">Si deseas colaborar con algun usuario a encontrar su producto, entonces ingresa <%= link_to "aquí", avisos_path%></p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Publicar avisos-->
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'publicaciones.jpg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Publicar Avisos</h4>
+                                    <p class="card-text  "></p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Avisos</h4>
+                                    <p class="card-text">En este módulo tendrás la posibilidad de publicar avisos buscando productos u objetos necesarios <%= link_to "Aquí", new_aviso_path%></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                  <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                      <div class="mainflip">
+                          <div class="frontside">
+                              <div class="card">
+                                  <div class="card-body text-center">
+                                      <p><img class=" img-fluid" src="<%= asset_path 'mis.png'%>" alt="card image"></p>
+                                      <h4 class="card-title">Publicaciones Pendientes</h4>
+                                      <p class="card-text"></p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="backside">
+                              <div class="card">
+                                  <div class="card-body text-center mt-4">
+                                      <br><br>
+                                      <h4 class="card-title">
+                                        </h4>
+                                      <p class="card-text">Tan solo presiona <%= link_to "aquí", publicaciones_path%> y podrás ver el estado de tus publicaciones</p>
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- como funciona -->
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'publicaciones.jpg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Como funciona</h4>
+                                    <p class="card-text  "></p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Como funciona</h4>
+                                    <p class="card-text">En este módulo te enseñaremos lo básico de como utilizar la plataforma de la mejor forma posible para que ustes pueda crear, solicitar y realizar otras opciones. <%= link_to "Aquí", ayuda_path%></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Como funciona-->
+
+            <%end%>
+            <%end%>
+
+            <%if current_user%>
+            <%if current_user.rol == "Super" ||  current_user.rol == "Administrador" %>
+            <!-- Productos -->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'product.jpeg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Ver Productos</h4>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                    <p class="card-text  "></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Publicaciones</h4>
+                                    <p class="card-text">Si deseas buscar algun producto que se encuentre disponible esta es la sección adecuada e ingresa <%= link_to "aquí", productos_path%></p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Avisos -->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'publicaciones.jpg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Ver Avisos</h4>
+                                    <p class="card-text  "></p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Avisos</h4>
+                                    <p class="card-text">Si deseas colaborar con algun usuario  ingresa <%= link_to "aquí", avisos_path%></p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--mis publicaciones-->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'product.jpeg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Pendientes</h4>
+                                    <p class="card-text  "></p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Publicaciones</h4>
+                                    <p class="card-text">Revisa aqui las publicaciones pendientes que te faltan por revisar, tan solo presiona <%= link_to "Aquí", publicaciones_path%> para revisarlas.</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Como funciona-->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                  <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                      <div class="mainflip">
+                          <div class="frontside">
+                              <div class="card">
+                                  <div class="card-body text-center">
+                                      <p><img class=" img-fluid" src="<%= asset_path 'funciona.jpg'%>" alt="card image"></p>
+                                      <h4 class="card-title">Como Funciona</h4>
+                                      <p class="card-text"></p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="backside">
+                              <div class="card">
+                                  <div class="card-body text-center mt-4">
+                                    <br><br>
+                                      <p class="card-text">Esta opción te explicara con detalle como utilizar la plataforma presionando <%= link_to "aquí", ayuda_path%></p>
+                                      <h4 class="card-title">
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <%end%>
+            <%end%>
+
+            <%if !current_user%>
+            <!-- Productos -->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'product.jpeg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Ver Productos</h4>
+                                    <p class="card-text  ">En esta sección encontraras varias publicaciones de productos gratuitos provenientes de la comunidad UTEM</p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Publicaciones</h4>
+                                    <p class="card-text">Si deseas buscar algun producto que se encuentre disponible esta es la sección adecuada e ingresa <%= link_to "aquí", productos_path%></p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Avisos -->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+
+                                    <p><img class=" img-fluid" src="<%= asset_path 'publicaciones.jpg'%>" alt="card image"></p>
+                                    <h4 class="card-title">Ver Avisos</h4>
+                                    <p class="card-text  ">En esta sección encontraras varios avisos donde los usuarios andan en busqueda de objetos.</p>
+                                    <a href="#" class="btn btn-primary btn-sm "><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <br><br>
+                                    <h4 class="card-title"> Avisos</h4>
+                                    <p class="card-text">Si deseas colaborar con algun usuario  ingresa <%= link_to "aquí", avisos_path%></p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Como funciona-->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                  <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                      <div class="mainflip">
+                          <div class="frontside">
+                              <div class="card">
+                                  <div class="card-body text-center">
+                                      <p><img class=" img-fluid" src="<%= asset_path 'funciona.jpg'%>" alt="card image"></p>
+                                      <h4 class="card-title">Como Funciona</h4>
+                                      <p class="card-text">Tienes dudas de como utilizar esta gran plataforma, aquí te ayudaremos a resolver tus dudas.</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="backside">
+                              <div class="card">
+                                  <div class="card-body text-center mt-4">
+                                    <br><br>
+                                      <p class="card-text">Esta opción te explicara con detalle como utilizar la plataforma presionando <%= link_to "aquí", ayuda_path%></p>
+                                      <h4 class="card-title">
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <!--Quienes somos-->
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class=" img-fluid" src="<%= asset_path 'funciona.jpg'%>" alt="card image"></p>
+                                        <h4 class="card-title">Registrarse</h4>
+                                        <p class="card-text"></p>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                      <br><br>
+                                        <p class="card-text">Deseas ser parte de esta plataforma y optar a varios productos de forma gratuita, entonces esta es tu mejor opción. <%= link_to "aquí.", new_user_registration_path%></p>
+                                        <h4 class="card-title">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%end%>
+
+        </div>
+    </div>
+</section>

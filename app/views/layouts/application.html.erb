@@ -1,0 +1,229 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<%= stylesheet_link_tag "forter.css" %>
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<!DOCTYPE html>
+<html>
+<div class="container-fluid header">
+   <header>
+ <img  src="<%= asset_path 'logo.jpg'%>" alt="card image" >
+</header>
+
+</div>
+  <head >
+    <meta charset="utf-8">
+    <title>REUTILIZA UTEM</title>
+
+    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Reutiliza UTEM <span class="sr-only"></span></a>
+      </li>
+<%if current_user %>
+      <li class="nav-item dropdown dmenu">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Configuraciones
+        </a>
+      <div class="dropdown-menu sm-menu">
+
+<%if current_user.rol != "Administrador" && current_user.rol != "Super"%>
+
+        <%= link_to "Editar Cuenta", edit_user_registration_path, class: "dropdown-item"%>
+
+        <%= link_to 'Cerrar Sesión', destroy_user_session_path, class: "dropdown-item" %>
+
+<%else%>
+          <%if current_user.rol == "Super"%>
+          <div align = "center">Permisos</div>
+          <%= link_to "Configuraciones de solicitudes", cambio_path, class: "dropdown-item"%>
+          <%= link_to "Administración", users_permisos_path, class: "dropdown-item"%>
+          <%end%>
+          <hr>
+            <div align = "center">Usuarios</div>
+          <%= link_to "Listado", users_index_path, class: "dropdown-item"%>
+          <%= link_to "Inactivos", users_inactivos_path, class: "dropdown-item"%>
+          <%= link_to "Gráficas", users_estadisticos_path, class: "dropdown-item"%>
+
+          <hr>
+          <%= link_to "Editar Cuenta", edit_user_registration_path, class: "dropdown-item"%>
+          <%= link_to "Cerra Sesión", destroy_user_session_path, class: "dropdown-item"%>
+
+<%end%>
+<%end%>
+
+</div>
+</li>
+
+
+<%if current_user %>
+<li class="nav-item dropdown dmenu">
+<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+Publicaciones
+</a>
+<div class="dropdown-menu sm-menu">
+
+<%if current_user.rol == "Usuario"%>
+
+<div align = "center">Publicaciones</div>
+<hr>
+<%= link_to "Mis publicaciones", publicaciones_path, class: "dropdown-item"%>
+<%= link_to "Aprobados", aprobados_path, class: "dropdown-item"%>
+<%= link_to "Rechazados", rechazados_path, class: "dropdown-item"%>
+<%= link_to "Pendientes", pendientes_path, class: "dropdown-item"%>
+<div align = "center">Productos</div>
+<hr>
+<%= link_to "Solicitados", solicitados_path, class: "dropdown-item"%>
+<%= link_to "Pedidos", pedidos_path, class: "dropdown-item"%>
+
+<%else%>
+<div align = "center">Publicaciones</div>
+<hr>
+<%= link_to "Publicaciones pendientes", publicaciones_path, class: "dropdown-item"%>
+<%= link_to "Publicaciones reportadas", reportados_path, class: "dropdown-item"%>
+<%end%>
+<%end%>
+
+</div>
+
+
+
+<%if current_user %>
+<li class="nav-item dropdown dmenu">
+<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+Productos
+</a>
+<div class="dropdown-menu sm-menu">
+
+<%if current_user.rol == "Usuario"%>
+
+<div align = "center">Productos</div>
+<hr>
+<%= link_to "Publicaciones", productos_path, class: "dropdown-item"%>
+<%= link_to "Publicar Producto", new_producto_url, class: "dropdown-item"%>
+
+<%else%>
+<div align = "center">Productos</div>
+<hr>
+<%= link_to "Publicaciones", productos_path, class: "dropdown-item"%>
+<%end%>
+<%end%>
+
+</div>
+
+</li>
+<%if current_user %>
+      <li class="nav-item dropdown dmenu">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Avisos
+        </a>
+      <div class="dropdown-menu sm-menu">
+
+<%if current_user.rol != "Administrador" && current_user.rol != "Super"%>
+
+        <%= link_to "Avisos", avisos_path, class: "dropdown-item"%>
+
+        <%= link_to 'Publicar Aviso', new_aviso_path, class: "dropdown-item" %>
+        <%= link_to 'Mis Avisos', misavisos_path, class: "dropdown-item" %>
+        <%= link_to 'Mis Avisos respondidos', contactados_path, class: "dropdown-item" %>
+
+<%else%>
+
+
+            <div align = "center">Avisos </div>
+            <%= link_to "Avisos", avisos_path, class: "dropdown-item"%>
+<%end%>
+<%end%>
+
+</div>
+</li>
+</ul>
+<%if !user_session%>
+<form class="form-inline my-2 my-lg-0">
+  <%= link_to 'Iniciar Sesión', new_user_session_path, {:style=>'color:#FFFFFF;'}%>
+</form>
+<%else%>
+<form class="form-inline my-2 my-lg-0">
+    <%= link_to 'Cerrar Sesión', destroy_user_session_path,{:style=>'color:#FFFFFF;'} %>
+</form>
+
+<%end%>
+  </div>
+</nav>
+
+
+  </head>
+  <body>
+
+
+    <BR><BR>
+<%= yield%>
+<BR><BR>
+  </body>
+  <footer class="text-light">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-3 col-lg-4 col-xl-3">
+                  <h5>REUTILIZA UTEM</h5>
+                  <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                  <p class="mb-0">
+                      Plataforma colaborativa donde todos los usuarios podran encontrar productos de primera y segunda calidad de forma
+                      gratuita y poder reutilizarlos a su gusto.
+                  </p>
+              </div>
+
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
+                  <h5>UTEM</h5>
+                  <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                  <ul class="list-unstyled">
+                      <li><a href="https://www.utem.cl/">Universidad Tecnológica Metropolitana</a></li>
+                      <li><a href="https://acreditacion.utem.cl/">Acreditación UTEM</a></li>
+                      <li><a href="http://www.utemvirtual.cl/portal/">UTEM virtual</a></li>
+                      <li><a href="">Link 4</a></li>
+                  </ul>
+              </div>
+
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
+                  <h5>Noticias</h5>
+                  <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                  <ul class="list-unstyled">
+                      <li><a href="http://noticias.utem.cl/">Noticias</a></li>
+                      <li><a href="https://utem.tv/">UTEM-TV</a></li>
+
+                  </ul>
+              </div>
+
+              <div class="col-md-4 col-lg-3 col-xl-3">
+                  <h5>Programa Sustentable</h5>
+                  <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                  <ul class="list-unstyled">
+                      <li><a href="https://sustentabilidad.utem.cl/">Programa Sustentable</a></li>
+                  </ul>
+              </div>
+              <div class="col-12 copyright mt-3">
+
+                  <p class="text-right text-muted">created with Rails <i class="fa fa-heart"></i> by </a> | <span>Pablo Salas</span></p>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- Footer -->

@@ -1,0 +1,37 @@
+
+
+<%= stylesheet_link_tag "confirmations.css" %>
+
+<div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Restablecer Contraseña</p>
+                </div>
+
+                <div class="form-content">
+                    <div class="row">
+                      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                        <%= devise_error_messages! %>
+                        <%= f.hidden_field :reset_password_token %>
+                        <p>Solo tendrás que ingresar una nueva contraseña que supere los 6 caracteres como minimo para que sea segura y sera actualizada
+                          inmediatamente.</p>
+                         <div class="form-content">
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                    <%= f.password_field :password,placeholder: "Contraseña Nueva",class: "form-control", autofocus: true, autocomplete: "off" %>
+                                </div>
+                                <div class="form-group">
+                                  <%= f.password_field :password_confirmation, placeholder: "Confirmar Contraseña Nueva",class: "form-control",autocomplete: "off" %>
+</div>
+
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                <%= f.submit "Restablecer Contraseña",class: "btn btn-primary" %>
+                             </div>
+                         </div>
+                      <%end%>
+                    </div>
+
+                </div>
+            </div>
+        </div>

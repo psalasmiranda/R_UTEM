@@ -1,0 +1,35 @@
+
+<%= stylesheet_link_tag "confirmations.css" %>
+
+<div class="container register-form">
+            <div class="form">
+                <div class="note">
+                    <p>Vuelva a enviar las instrucciones de desbloqueo</p>
+                </div>
+
+                <div class="form-content">
+                    <div class="row">
+                      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+                        <%= devise_error_messages! %>
+                        <p>Te registraste pero aun no recibes tu correo de atenticación, entonces ingresa tu correo UTEM y te enviaremos
+                        un nuevo correo de autenticación.</p>
+                         <div class="form-content">
+                        <div class="col-md-6">
+                             <div class="form-group">
+
+                                  <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Correo UTEM",class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+                             </div>
+                         </div>
+
+
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                <%= f.submit "Vuelva a enviar las instrucciones de desbloqueo",class: "btn btn-primary" %>
+                             </div>
+                         </div>
+                      <%end%>
+                    </div>
+
+                </div>
+            </div>
+        </div>
