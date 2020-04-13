@@ -21,11 +21,11 @@ gem 'roadie'
 gem 'bootstrap' , '~> 4.1.3'
 gem 'jquery-rails'
 #Gema para imagenes ( foto del usuario y foto de productos)
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'paperclip', '~> 6.1'
 #Gema para control de usuario (administrador y usuario normal)
 gem 'devise'
 #Gema para incorporar imagenes ( tanto administrador y producto)
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'paperclip', '~> 6.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
